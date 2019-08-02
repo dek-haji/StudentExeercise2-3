@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 // using StudentExercise;
 
 namespace StudentExercises
@@ -7,7 +8,7 @@ namespace StudentExercises
     class Program
     {
 
-        static void Main(string[] args)
+       public static void Main(string[] args)
         {
             // create 4, or more exercise
             Exercise classExercise = new Exercise("Class Exercise", "JavaScript", 1);
@@ -80,12 +81,24 @@ namespace StudentExercises
                 jsonServer,capstone, classExercise, dictionaryExercise
 
             };
+            //Console.WriteLine($"hahahaha haha {documentsModel.ExerciseType}");
 
             foreach (Student student in students)
             {
                 student.getFullNameAddExercise(student);
                 Console.WriteLine(" ");
 
+            }
+
+
+            //List exercises for the JavaScript language by using the Where() LINQ method.
+
+           IEnumerable<Exercise> jsLanguage = from js in exercises
+                                               where js.ExerciseType == "JavaScript"
+                                              select js;
+            foreach (Exercise c in jsLanguage)
+            {
+                Console.WriteLine($"there is : {c.ExerciseName} ");
             }
         }
 
